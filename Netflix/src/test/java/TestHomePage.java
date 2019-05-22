@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -12,7 +11,7 @@ public class TestHomePage extends CommonAPI {
 
     public HomePage homePage;
 
-    @BeforeTest
+    @BeforeMethod
     public void init(){
         homePage = PageFactory.initElements(driver,HomePage.class);
     }
@@ -36,7 +35,6 @@ public class TestHomePage extends CommonAPI {
             System.out.println("Failed to show InputError");
 
         }
-        quitDriver();
     }
 
     //-----------Testcase 2. Testing the error message if login with invalid info ----------
@@ -57,7 +55,6 @@ public class TestHomePage extends CommonAPI {
             System.out.println("Failed");
 
         }
-        quitDriver();
     }
 
 
@@ -104,7 +101,6 @@ public class TestHomePage extends CommonAPI {
             System.out.println("They dont need Credit or Debit card info");
         }
         System.out.println(driver.getPageSource());
-        quitDriver();
 
     }
 
@@ -137,7 +133,6 @@ public class TestHomePage extends CommonAPI {
             output2 = "Basic plan is not clickable";
         }
         System.out.println(output + " " + output2);
-        quitDriver();
     }
 
 
@@ -160,7 +155,6 @@ public class TestHomePage extends CommonAPI {
         }
         sleepFor(1);
         System.out.println(output);
-        quitDriver();
     }
 
 
@@ -173,7 +167,6 @@ public class TestHomePage extends CommonAPI {
         sleepFor(1);
         System.out.println(driver.getPageSource());
         sleepFor(1);
-        quitDriver();
     }
 
 
@@ -244,7 +237,6 @@ public class TestHomePage extends CommonAPI {
         driver.findElement(By.xpath("//*[@id=\"search-input\"]")).sendKeys("Cant watch my movie");
         driver.findElement(By.xpath("//*[@id=\"search-placeholder\"]/form/div/div/div[1]/button"));
         sleepFor(1);
-        quitDriver();
     }
 
     //-----------Testcase 12. Testing Language Picker on the homepage  ----------
@@ -283,7 +275,6 @@ public class TestHomePage extends CommonAPI {
         sleepFor(2);
         driver.findElement(By.xpath("/html/body/div[1]/div[3]/div[2]/ul/li/a")).click();
         sleepFor(1);
-        quitDriver();
     }
 
     //-----------Testcase 15. Testing Jobs one the homepage  ----------
@@ -298,7 +289,7 @@ public class TestHomePage extends CommonAPI {
         if(!netflixJobsLogo.getText().equalsIgnoreCase(netflixLogo.getText())){
             System.out.println("Netflix logo changed accordungly");
         }
-        quitDriver();
+
     }
 
     //-----------Testcase 16. Testing Jobs one the homepage and searchbox  ----------
@@ -327,7 +318,6 @@ public class TestHomePage extends CommonAPI {
         if(Integer.valueOf(countJobs)>0) {
             System.out.println("They have some QA Tester positions");
         }
-        quitDriver();
     }
 
     //-----------Testcase 18. Testing Jobs one the homepage and searchbox jobs  ----------
@@ -346,6 +336,5 @@ public class TestHomePage extends CommonAPI {
             System.out.println("Failed");
 
         }
-        quitDriver();
     }
 }
