@@ -3,7 +3,8 @@
 
 <suite name="Netflix Automation Script " parallel="false">
 
-
+    <parameter name="useCloudEnv"  value="false"/>
+    <parameter name="cloudEnvName" value="Saucelabs"/>
 
     <parameter name="platform" value="windows"/>
     <parameter name="url" value="https://www.netflix.com/"/>
@@ -11,9 +12,9 @@
 
 
 
-    <test name="Goldmansachs Test">
+    <test name="Netflix Test">
         <classes>
-            <class name=""/>
+            <class name="TestHomePage"/>
         </classes>
     </test>
 </suite>

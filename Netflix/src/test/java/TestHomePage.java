@@ -1,14 +1,18 @@
+import base.base.CommonAPI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class TestHomePage extends CommonAPI {
 
     public HomePage homePage;
 
-
+    @BeforeTest
     public void init(){
         homePage = PageFactory.initElements(driver,HomePage.class);
     }
@@ -16,7 +20,7 @@ public class TestHomePage extends CommonAPI {
     //-----------Testcase 1. Testing if Input error shows up ----------
 
 
-
+    @Test
     public void accountInputError(){
         homePage.clickAccount();
         sleepFor(3);
