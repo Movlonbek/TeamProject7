@@ -8,8 +8,10 @@
 
     <parameter name="platform" value="mac"/>
     <parameter name="url" value="https://www.goldmansachs.com/"/>
-    <parameter name="browser" value="Chrome"/>
 
+
+
+    <parameter name="browser" value="Chrome"/>
 
 
     <test name="Goldmansachs Test">
