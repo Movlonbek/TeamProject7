@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Macys Automation Script " parallel="false">
+
+    <parameter name="useCloudEnv"  value="false"/>
+    <parameter name="cloudEnvName" value="Saucelabs"/>
+
+    <parameter name="platform" value="windows"/>
+    <parameter name="url" value="https://www.macys.com/"/>
+    <parameter name="browser" value="chrome"/>
+
+
+
+    <test name="Macys Test">
+        <classes>
+            <class name="TestHomePage"/>
+        </classes>
+    </test>
+</suite>
