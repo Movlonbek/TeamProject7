@@ -62,7 +62,7 @@ public class CommonAPI {
     }
 
     @Parameters({"platform", "url", "browser", "cloud", "browserVersion", "envName"})
-    @BeforeMethod
+    @BeforeClass
     public static WebDriver setupDriver(String platform, String url, @Optional("chrome") String browser, @Optional("false") boolean cloud, String browserVersion, String envName) throws MalformedURLException {
         if (cloud) {
             driver = getCloudDriver(browser, browserVersion, platform, envName);
@@ -270,9 +270,9 @@ public class CommonAPI {
         extent.close();
     }
 
-    @AfterMethod
+    @AfterClass
     public void quitDriver() {
-        driver.close();
+       // driver.close();
         driver.quit();
     }
 
