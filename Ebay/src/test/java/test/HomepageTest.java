@@ -87,7 +87,7 @@ public class HomepageTest extends CommonAPI {
         }
 
         public void clickinMusicButton(){
-            homepage.music();
+            homepage.gotoMusic();
         }
 
 
