@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Amazon Automation Script" parallel="false">
+
+    <parameter name="cloud"  value="false"/>
+    <parameter name="envName" value="Saucelabs"/>
+    <parameter name="browserVersion" value="74"/>
+
+    <parameter name="platform" value="mac"/>
+    <parameter name="url" value="https://www.amazon.com/"/>
+    <parameter name="browser" value="Chrome"/>
+
+
+
+    <test name="amazon test">
+
+        <classes>
+<!--            <class name="Test"></class>-->
+        </classes>
+
+
+    </test>
+
+</suite>
