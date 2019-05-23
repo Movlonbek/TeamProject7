@@ -320,22 +320,26 @@ public class TestHomePage extends CommonAPI {
     //-----------Testcase 18. Testing Jobs one the homepage and searchbox jobs  ----------
     @Test
     public void signInButtonTestCase() {
+       String status;
         homePage.clicksignInButton();
         sleepFor(1);
         homePage.logIn("wormike96@gmail.com", "3047");
         sleepFor(1);
         WebElement errorLoginFail = driver.findElement(By.xpath("//*[@id=\"appMountPoint\"]/div/div[3]/div/div/div[1]/div/div[2]"));
         if (errorLoginFail.isDisplayed()) {
-            System.out.println("Success. Message was shown up");
+
+            status = "Success. Message was shown";
             TestLogger.log(getClass().getSimpleName() + ": " + convertToString(new Object() {
             }.getClass().getEnclosingMethod().getName()));
 
         } else {
-            System.out.println("Failed");
+            status = "Failed. Message was not shown ";
             TestLogger.log(getClass().getSimpleName() + ": " + convertToString(new Object() {
             }.getClass().getEnclosingMethod().getName()));
 
         }
+        TestLogger.log(getClass().getSimpleName() + ":" + status);
+        System.out.println(status);;
     }
 }
 
