@@ -1,11 +1,48 @@
 import base.base.CommonAPI;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.testng.annotations.Test;
 
 public class TestCarrers extends CommonAPI {
 
 
+    //-------------Initializing all the WebElements of Career page--------------
 
+    @FindBy(xpath = "//*[@id=\"wrapper\"]/section[1]/div[1]/div/div[1]/a/span")
+    public static WebElement proffesionalsClick;
+    @FindBy(xpath = "//*[@id=\"wrapper\"]/section[1]/div[1]/div/div[2]/a/span")
+    public static WebElement explore;
+    @FindBy(xpath = "//*[@id=\"wrapper\"]/section[1]/div[1]/div/div/div/div[3]/a/span")
+    public static WebElement prepare;
+    @FindBy(xpath = "//*[@id=\"wrapper\"]/section[1]/div[1]/div/div[4]/a/span")
+    public static WebElement searchJob;
+    @FindBy(xpath = "//*[@id=\"wrapper\"]/section[1]/div[1]/div/div[5]/a/span")
+    public static WebElement blog;
+
+
+
+    //-------------List of click methods of all the WebElements of Contact Us page--------------
+
+
+    public void proffesionalsClick(){
+        proffesionalsClick.click();
+    }
+
+    public void explore(){
+        explore.click();
+    }
+    public void prepare(){
+        prepare.click();
+    }
+    public void searchJob(){
+        searchJob.click();
+    }
+    public void blog(){
+        blog.click();
+    }
+
+    @Test
     public void clickCareers() {
         driver.findElement(By.xpath("//*[@id=\"audience-nav\"]/li[1]/a")).click();
         driver.findElement(By.xpath("//*[@id=\"wrapper\"]/section[1]/section/div/div[2]/a")).click();
@@ -25,4 +62,10 @@ public class TestCarrers extends CommonAPI {
         driver.findElement(By.xpath("//*[@id=\"footer-student\"]/div/div/div[2]/div/div[2]/div/div/div/div/a")).click();
         sleepFor(2);
     }
+
+
+
+
+
+
 }
