@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Goldman Automation Script " parallel="false">
+
+    <parameter name="useCloudEnv"  value="false"/>
+    <parameter name="cloudEnvName" value="Saucelabs"/>
+
+    <parameter name="platform" value="mac"/>
+    <parameter name="url" value="https://www.goldmansachs.com"/>
+    <parameter name="browser" value="chrome"/>
+
+
+
+    <test name="GoldmanSachs Test">
+        <classes>
+            <class name="TestHomePage"/>
+        </classes>
+    </test>
+</suite>

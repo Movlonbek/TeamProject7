@@ -9,9 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>Goldmansachs</artifactId>
-
-
+    <artifactId>goldMan</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.webAutomation</groupId>
@@ -37,11 +35,12 @@
                 <version>3.0.0-M3</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFiles>src/test/resources/Runner.xml</suiteXmlFiles>
+                        <suiteXmlFiles>src/test/resources/GoldmanRunner.xml</suiteXmlFiles>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
 
 </project>
