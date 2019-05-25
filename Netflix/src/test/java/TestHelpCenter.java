@@ -3,6 +3,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import reporting.TestLogger;
 
 public class TestHelpCenter extends CommonAPI {
 
@@ -24,10 +25,10 @@ public class TestHelpCenter extends CommonAPI {
         driver.findElement(By.xpath("//*[@id=\"article-feedback-container\"]/div/div/div[2]/button[2]")).click();
         sleepFor(3);
         if(driver.findElement(By.xpath("//*[@id=\"article-feedback-container\"]/div/div")).isDisplayed()){
-            System.out.println("Success. Message was shown up");
+            TestLogger.log(getClass().getSimpleName() + "Success, Message was shown up");
         }
         else{
-            System.out.println("Fail.Message was not shown up");
+            TestLogger.log(getClass().getSimpleName() + "Failed. Message wasnt shown up");
         }
 
     }
@@ -47,7 +48,7 @@ public class TestHelpCenter extends CommonAPI {
         sleepFor(2);
         driver.findElement(By.xpath("//*[@id=\"article-feedback-container\"]/div/form/button")).click();
 
-        System.out.println("Success. Message was shown up. Message was sent");
+        TestLogger.log(getClass().getSimpleName() + "Success. Message was shown up. Message was sent");
 
     }
 
@@ -61,9 +62,9 @@ public class TestHelpCenter extends CommonAPI {
         String phoneNumber = driver.findElement(By.xpath("//*[@id=\"phone-contact\"]/div/div/div/div[2]/div/div/a")).getText();
 
         if (phoneNumber.length() == 14 && (!phoneNumber.contains("[a-aZ-Z]"))) {
-            System.out.println("Phone Number was provided : " + phoneNumber);
+            TestLogger.log(getClass().getSimpleName() + "Phone number is provided :" + phoneNumber);
         } else {
-            System.out.println("Phone Number was not provided or is incorrect");
+            TestLogger.log(getClass().getSimpleName() + "Phone number is not provided");
         }
     }
 

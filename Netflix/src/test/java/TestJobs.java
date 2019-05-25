@@ -4,6 +4,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
+import reporting.TestLogger;
 
 public class TestJobs extends CommonAPI {
 
@@ -23,10 +24,10 @@ public class TestJobs extends CommonAPI {
         String pageSource = driver.getPageSource();
 
         if(pageSource.indexOf("Data") != -1 && pageSource.indexOf("Analytics") != -1){
-            System.out.println("Netflix provides positions at Data and Analytics field ");
+            TestLogger.log(getClass().getSimpleName() + "Netflix provides positions in Data and Analytics field");
         }
         else{
-            System.out.println("They dont provide Data and Analytics field");
+            TestLogger.log(getClass().getSimpleName() + "Netflix doesnt provide positions in Data and Analytics field");
         }
         sleepFor(1);
     }
@@ -71,7 +72,7 @@ public class TestJobs extends CommonAPI {
         driver.findElement(By.cssSelector("#__next > div > main > section > div > div.css-o2rael.ejb64032 > div.css-1ser9e4.ejb64037 > div.css-d4d1cv.ejb64031 > button")).click();
         sleepFor(1);
         Assert.assertTrue(driver.findElement(By.cssSelector("#los-angeles-california-cb")).isSelected());
-        System.out.println("Success. US Locations are picked");
+        TestLogger.log(getClass().getSimpleName() + "Success. US country was picked");
     }
 
     //-------------Test case 4. Check if the checkbox for Asian  locations is selected ---------------
@@ -86,7 +87,7 @@ public class TestJobs extends CommonAPI {
         driver.findElement(By.cssSelector("#__next > div > main > section > div > div.css-o2rael.ejb64032 > div.css-1ser9e4.ejb64037 > div.css-d4d1cv.ejb64031 > button")).click();
         sleepFor(1);
         Assert.assertTrue(driver.findElement(By.cssSelector("#singapore-singapore-cb")).isSelected());
-        System.out.println("Success. Asian locations are picked");
+        TestLogger.log(getClass().getSimpleName() + "Success. Asian locations are picked");
     }
 
     //-------------Test case 5. Checking slide toggle menu at LifeAtNetflix---------------
@@ -115,10 +116,10 @@ public class TestJobs extends CommonAPI {
         String pageSource = driver.getPageSource();
         sleepFor(1);
         if(pageSource.indexOf("Data")!=-1){
-            System.out.println("When checkbox is selected it looks for the positions provided by choice");
+            TestLogger.log(getClass().getSimpleName() + "When checkbox is checked it looks for positions selected by choice");
         }
         else{
-            System.out.println("It doesnt work");
+            TestLogger.log(getClass().getSimpleName() + "Failed! It doesn`t work");
         }
     }
 
@@ -133,10 +134,10 @@ public class TestJobs extends CommonAPI {
         String pageSource = driver.getPageSource();
         sleepFor(1);
         if(pageSource.indexOf("Financial")!=-1){
-            System.out.println("When checkbox is selected it looks for the positions provided by choice");
+            TestLogger.log(getClass().getSimpleName() + "When checkbox is checked it looks for positions selected by choice");
         }
         else{
-            System.out.println("It doesnt work");
+            TestLogger.log(getClass().getSimpleName() + "Failed! It doesn`t work");
         }
     }
 
@@ -151,10 +152,10 @@ public class TestJobs extends CommonAPI {
         int num = Integer.valueOf(numberOfJobs);
         sleepFor(1);
         if(num>0){
-            System.out.println("Netflix has open position in "+jobPosition+" field");
+            TestLogger.log(getClass().getSimpleName() + "Netflix has open positions in "+ jobPosition+ "field");
         }
         else{
-            System.out.println("Netflix doesnt have open positions in "+jobPosition+" field");
+            TestLogger.log(getClass().getSimpleName() + "Netflix doesn`t have open positions in "+ jobPosition+ "field");
         }
 
     }
@@ -166,10 +167,10 @@ public class TestJobs extends CommonAPI {
         driver.findElement(By.xpath("//*[@id=\"__next\"]/div/main/section[4]/div[2]/div/div/div[3]/a/div")).click();
         sleepFor(3);
         if(driver.findElement(By.xpath("//*[@id=\"__next\"]/div/main/section[4]/div[2]/div/div/div[3]/a/div")).isEnabled()){
-            System.out.println("Video is working great");
+            TestLogger.log(getClass().getSimpleName() + "Video file is running properly");
         }
         else{
-            System.out.println("Video file is not running");
+            TestLogger.log(getClass().getSimpleName() + "Video file is not  running properly");
         }
     }
 
@@ -179,10 +180,10 @@ public class TestJobs extends CommonAPI {
         driver.findElement(By.xpath("//*[@id=\"__next\"]/div/main/section[4]/div[2]/div/div/div[2]/a/div")).click();
         sleepFor(3);
         if(driver.findElement(By.xpath("//*[@id=\"__next\"]/div/main/section[4]/div[2]/div/div/div[2]/a/div")).isEnabled()){
-            System.out.println("Video is working great");
+            TestLogger.log(getClass().getSimpleName() + "Video file is running properly");
         }
         else{
-            System.out.println("Video file is not running");
+            TestLogger.log(getClass().getSimpleName() + "Video file is not  running properly");
         }
     }
 
@@ -193,10 +194,10 @@ public class TestJobs extends CommonAPI {
         driver.findElement(By.xpath("//*[@id=\"__next\"]/div/main/section[4]/div[2]/div/div/div[1]/a/div")).click();
         sleepFor(3);
         if(driver.findElement(By.xpath("//*[@id=\"__next\"]/div/main/section[4]/div[2]/div/div/div[1]/a/div")).isEnabled()){
-            System.out.println("Video is working great");
+            TestLogger.log(getClass().getSimpleName() + "Video file is running properly");
         }
         else{
-            System.out.println("Video file is not running");
+            TestLogger.log(getClass().getSimpleName() + "Video file is not  running properly");
         }
     }
 }

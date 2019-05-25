@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import reporting.TestLogger;
 
 public class TestContactUs extends CommonAPI {
 
@@ -29,10 +30,10 @@ public class TestContactUs extends CommonAPI {
         sleepFor(2);
         WebElement inputError = driver.findElement(By.xpath("//*[@id=\"appMountPoint\"]/div/div[3]/div/div/div[1]/form/div[1]/div[2]"));
         if(inputError.isDisplayed()){
-            System.out.println("Input Error was displayed. Text: " + inputError.getText() );
+            TestLogger.log(getClass().getSimpleName() + "Input error was displayed : " + inputError.getText());
         }
         else{
-            System.out.println("Failed to show InputError");
+            TestLogger.log(getClass().getSimpleName() + "Failed. Error message was not displayed");
         }
 
     }
@@ -53,10 +54,10 @@ public class TestContactUs extends CommonAPI {
         sleepFor(1);
         WebElement errorLoginFail = driver.findElement(By.xpath("//*[@id=\"appMountPoint\"]/div/div[3]/div/div/div[1]/div/div[2]"));
         if (errorLoginFail.isDisplayed()){
-            System.out.println("Success. Message was shown up");
+            TestLogger.log(getClass().getSimpleName() + "Success! Message was shown up");
         }
         else{
-            System.out.println("Failed");
+            TestLogger.log(getClass().getSimpleName() + "Failed! Message wasnt shown up");
         }
 
     }
@@ -76,10 +77,10 @@ public class TestContactUs extends CommonAPI {
         sleepFor(1);
         WebElement errorLoginFail = driver.findElement(By.xpath("//*[@id=\"appMountPoint\"]/div/div[3]/div/div/div[1]/div/div[2]"));
         if (errorLoginFail.isDisplayed()){
-            System.out.println("Success. Message was shown up");
+            TestLogger.log(getClass().getSimpleName() + "Success! Message was shown up");
         }
         else{
-            System.out.println("Failed");
+            TestLogger.log(getClass().getSimpleName() + "Failed! Message wasnt shown up");
         }
 
     }
@@ -99,10 +100,10 @@ public class TestContactUs extends CommonAPI {
         sleepFor(1);
         WebElement passwordTooShort = driver.findElement(By.xpath("//*[@id=\"appMountPoint\"]/div/div[3]/div/div/div[1]/form/div[2]/div[2]"));
         if (passwordTooShort.isDisplayed()){
-            System.out.println("Success. Message was shown up");
+            TestLogger.log(getClass().getSimpleName() + "Success! Message was shown up");
         }
         else{
-            System.out.println("Failed");
+            TestLogger.log(getClass().getSimpleName() + "Failed! Message wasnt shown up");
         }
 
     }
@@ -120,10 +121,10 @@ public class TestContactUs extends CommonAPI {
         driver.findElement(By.xpath("//*[@id=\"article-feedback-container\"]/div/div/div[2]/button[2]")).click();
         sleepFor(3);
         if(driver.findElement(By.xpath("//*[@id=\"article-feedback-container\"]/div/div")).isDisplayed()){
-            System.out.println("Success. Message was shown up");
+            TestLogger.log(getClass().getSimpleName() + "Success! Message was shown up");
         }
         else{
-            System.out.println("Fail.Message was not shown up");
+            TestLogger.log(getClass().getSimpleName() + "Failed! Message wasnt shown up");
         }
 
     }
@@ -142,7 +143,7 @@ public class TestContactUs extends CommonAPI {
         sleepFor(2);
         driver.findElement(By.xpath("//*[@id=\"article-feedback-container\"]/div/form/button")).click();
 
-        System.out.println("Success. Message was shown up. Message was sent");
+        TestLogger.log(getClass().getSimpleName() + "Success! Message was shown up. Message was sent");
 
     }
 
@@ -157,10 +158,10 @@ public class TestContactUs extends CommonAPI {
         String phoneNumber = driver.findElement(By.xpath("//*[@id=\"phone-contact\"]/div/div/div/div[2]/div/div/a")).getText();
 
         if(phoneNumber.length()==14 &&(!phoneNumber.contains("[a-aZ-Z]")) ){
-            System.out.println("Phone Number was provided : "+phoneNumber);
+            TestLogger.log(getClass().getSimpleName() + "Phone number is provided : " + phoneNumber);
         }
         else{
-            System.out.println("Phone Number was not provided or is incorrect");
+            TestLogger.log(getClass().getSimpleName() + "Phone number is not provided or incorrect");
         }
 
     }
@@ -194,7 +195,7 @@ public class TestContactUs extends CommonAPI {
         driver.findElement(By.xpath("//*[@id=\"lang-switcher\"]/option[5]")).click();
         sleepFor(1);
         Assert.assertEquals(expectedString, driver.findElement(By.xpath("/html/body/div[1]/div[3]/div[2]/div/div[1]/section[1]/h1")).getText());
-        System.out.println("Language was changed successfully");
+        TestLogger.log(getClass().getSimpleName() + "Language was changed successfully");
     }
 
     //-------------Test case 10. Checking if languages switch works---------------

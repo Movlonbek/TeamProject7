@@ -19,7 +19,7 @@ public class TestHomePage extends CommonAPI {
 
     //-----------Testcase 1. Testing if Input error shows up ----------
 
-
+    @Test
     public void accountInputError() {
         homePage.clickAccount();
         sleepFor(3);
@@ -28,10 +28,10 @@ public class TestHomePage extends CommonAPI {
         sleepFor(5);
         WebElement inputError = driver.findElement(By.xpath("//*[@id=\"appMountPoint\"]/div/div[3]/div/div/div[1]/form/div[1]/div[2]"));
         if (inputError.isDisplayed()) {
-            System.out.println("Input Error was displayed. Text: " + inputError.getText());
+            TestLogger.log(getClass().getSimpleName() + ": The message was shown. The text of the message is : " + inputError.getText() );
 
         } else {
-            System.out.println("Failed to show InputError");
+            TestLogger.log(getClass().getSimpleName() + "Failed. Message was not shown");
 
         }
     }
@@ -46,11 +46,10 @@ public class TestHomePage extends CommonAPI {
         sleepFor(1);
         WebElement errorLoginFail = driver.findElement(By.xpath("//*[@id=\"appMountPoint\"]/div/div[3]/div/div/div[1]/div/div[2]"));
         if (errorLoginFail.isDisplayed()) {
-            System.out.println("Success. Message was shown up");
+            TestLogger.log(getClass().getSimpleName() + "Success! Message was shown");
 
         } else {
-            System.out.println("Failed");
-
+            TestLogger.log(getClass().getSimpleName() + "Failed. Message was not shown");
         }
     }
 
@@ -65,10 +64,10 @@ public class TestHomePage extends CommonAPI {
         sleepFor(1);
         WebElement errorLoginFail = driver.findElement(By.xpath("//*[@id=\"appMountPoint\"]/div/div[3]/div/div/div[1]/div/div[2]"));
         if (errorLoginFail.isDisplayed()) {
-            System.out.println("Success. Message was shown up");
+            TestLogger.log(getClass().getSimpleName() + "Success! Message was shown");
 
         } else {
-            System.out.println("Failed");
+            TestLogger.log(getClass().getSimpleName() + "Failed. Message was not shown");
 
         }
         quitDriver();
@@ -91,9 +90,9 @@ public class TestHomePage extends CommonAPI {
         driver.findElement(By.xpath("//*[@id=\"appMountPoint\"]/div/div[3]/div/form/div[2]/button")).click();
         sleepFor(3);
         if (driver.findElement(By.xpath("//*[@id=\"creditOrDebitCardDisplayStringId\"]/a/div")).getText().indexOf("Debit") != -1) {
-            System.out.println("They need Credit or Debit card to procced");
+            TestLogger.log(getClass().getSimpleName() + "They need Credit or Debit card to proceed");
         } else {
-            System.out.println("They dont need Credit or Debit card info");
+            TestLogger.log(getClass().getSimpleName() + "They don`t need Credit or Debit card to proceed");
         }
         System.out.println(driver.getPageSource());
 
@@ -125,7 +124,7 @@ public class TestHomePage extends CommonAPI {
         } else {
             output2 = "Basic plan is not clickable";
         }
-        System.out.println(output + " " + output2);
+        TestLogger.log(getClass().getSimpleName() + output + output2);
     }
 
 
@@ -155,7 +154,7 @@ public class TestHomePage extends CommonAPI {
     public void pickYourPriceTest() {
         homePage.clickPickYourPrice();
         sleepFor(1);
-        System.out.println(driver.getPageSource());
+        TestLogger.log(getClass().getSimpleName() + driver.getPageSource());
         sleepFor(1);
     }
 
@@ -175,7 +174,7 @@ public class TestHomePage extends CommonAPI {
             modalDisplayed = false;
         }
         Assert.assertTrue(modalDisplayed);
-        System.out.println("Test case succeeded");
+        TestLogger.log(getClass().getSimpleName() + "Test case passed");
     }
 
     //-----------Testcase 9. Testing Contact Us and testing phone number button ----------
@@ -190,7 +189,7 @@ public class TestHomePage extends CommonAPI {
         driver.findElement(By.xpath("//*[@id=\"phoneContactTrigger\"]")).click();
         sleepFor(1);
         Assert.assertFalse(driver.findElement(By.xpath("//*[@id=\"phone-contact\"]/div/div/div/div[2]/div/div/a")).getText().contains("[a-zA-Z]"));
-        System.out.println("Phone number is provided");
+        TestLogger.log(getClass().getSimpleName() + "Phone number is provided");
 
     }
 
@@ -213,7 +212,7 @@ public class TestHomePage extends CommonAPI {
         softAssert.assertEquals(expectedMenu1, driver.findElement(By.xpath("//*[@id=\"selfHelpPopover\"]/div[2]/ul[1]/li[1]/a")).getText());
         softAssert.assertEquals(expectedMenu2, driver.findElement(By.xpath("//*[@id=\"selfHelpPopover\"]/div[2]/ul[1]/li[2]/a")).getText());
         Assert.assertEquals(expectedMenu3, driver.findElement(By.xpath("//*[@id=\"selfHelpPopover\"]/div[2]/ul[1]/li[3]/a")).getText());
-        System.out.println("All tests are successful");
+        TestLogger.log(getClass().getSimpleName() + "All tests were successful");
 
     }
 
@@ -253,7 +252,7 @@ public class TestHomePage extends CommonAPI {
         driver.findElement(By.xpath("//*[@id=\"undefined-select\"]/option[2]")).click();
         sleepFor(1);
         Assert.assertEquals(expectedString, driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[1]/div/div[2]/div[1]")).getText());
-        System.out.println("Language was changed successfully");
+        TestLogger.log(getClass().getSimpleName() + "Language was picked successfully");
     }
 
     //-----------Testcase 14. Testing FAQ  on the homepage  ----------
@@ -280,7 +279,7 @@ public class TestHomePage extends CommonAPI {
         WebElement netflixJobsLogo = driver.findElement(By.xpath("//*[@id=\"__next\"]/div/header/section/div[1]/div/a"));
         sleepFor(1);
         if (!netflixJobsLogo.getText().equalsIgnoreCase(netflixLogo.getText())) {
-            System.out.println("Netflix logo changed accordungly");
+            TestLogger.log(getClass().getSimpleName() + "Jobs logo is different");
             TestLogger.log(getClass().getSimpleName() + ": " + convertToString(new Object() {
             }.getClass().getEnclosingMethod().getName()));
         }
@@ -318,7 +317,7 @@ public class TestHomePage extends CommonAPI {
     }
 
     //-----------Testcase 18. Testing Jobs one the homepage and searchbox jobs  ----------
-    @Test
+
     public void signInButtonTestCase() {
        String status;
         homePage.clicksignInButton();
