@@ -2,6 +2,12 @@ import base.base.CommonAPI;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 public class MediaCenter extends CommonAPI {
 
     @FindBy(xpath = "//*[@id=\"mainNavigation\"]/div[2]/ul[2]/li[1]/a")
@@ -49,6 +55,14 @@ public class MediaCenter extends CommonAPI {
     public void registerClick(){
         register.click();
         sleepFor(2);
+    }
+    public  Properties loadProperties() throws IOException {
+        Properties prop = new Properties();
+        InputStream inputST = new FileInputStream("C:\\Users\\wormi\\IdeaProjects\\TeamProject7\\Netflix\\src\\test\\resources\\mail.properties");
+        prop.load(inputST);
+        inputST.close();
+        return prop;
+
     }
 
 

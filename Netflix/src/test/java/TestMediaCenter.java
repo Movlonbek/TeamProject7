@@ -1,6 +1,7 @@
 import base.base.CommonAPI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -8,6 +9,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import reporting.TestLogger;
+
+import java.io.IOException;
+import java.util.Properties;
 
 public class TestMediaCenter extends CommonAPI {
     public MediaCenter mediaCenter;
@@ -93,9 +97,8 @@ public class TestMediaCenter extends CommonAPI {
         sleepFor(2);
     }
 
-    //--------------------Test case 4. Testing out Press Outlet button--------------
+    //--------------------Test case 5. Testing out login invalid input error message--------------
 
-    @Test
 
     public void testLoginForm(){
         String expectedValue = "We didn't recognize the username or password you entered. Please try again.";
@@ -108,4 +111,93 @@ public class TestMediaCenter extends CommonAPI {
         TestLogger.log(getClass().getSimpleName() + "The error message was shown up properly");
     }
 
+    //--------------------Test case 6. Testing out Forgot password button--------------
+
+    public void testLoginFormForgotPassword() throws IOException {
+        mediaCenter.mediaLogInClick();
+        clickByXpath("//*[@id=\"new_user\"]/div[4]/a[2]");
+        sleepFor(2);
+        typeByXpath("//*[@id=\"user_name\"]", "wormike96@gmail.com");
+        mouseHoverByXpath("//*[@id=\"new_user\"]/div[4]/a");
+        sleepFor(4);
+        clickByXpath("//*[@id=\"new_user\"]/div[4]/a");
+        driver.get("https://mail.google.com/mail/u/0/#inbox");
+        sleepFor(2);
+        Properties prop = mediaCenter.loadProperties();
+        String email = prop.getProperty("mail_email");
+        String password = prop.getProperty("mail_password");
+        typeByXpath("//*[@id=\"identifierId\"]", email);
+        clickByXpath("//*[@id=\"identifierNext\"]/content/span");
+        sleepFor(2);
+        typeByXpath("//*[@id=\"password\"]/div[1]/div/div[1]/input", password);
+        clickByXpath("//*[@id=\"passwordNext\"]/content/span");
+        sleepFor(5);
+        if(driver.getPageSource().contains("Netflix")){
+            TestLogger.log(getClass().getSimpleName() + "The password was sent to email");
+        }
+        else{
+            TestLogger.log(getClass().getSimpleName() + "Message was not sent to email");
+        }
+        sleepFor(2);
+
+    }
+
+    //--------------------Test case 7. Testing out Language picker--------------
+
+
+    public void testLanguagePicker(){
+        String expectedString = "Recursos de la empresa";
+        mediaCenter.languagePickerClick();
+        clickByXpath("//*[@id=\"languageSelection\"]/li[3]/a");
+        sleepFor(2);
+        String actualString = getTextByXpath("//*[@id=\"mainNavigation\"]/div[2]/ul[2]/li[3]/a");
+        Assert.assertEquals(expectedString, actualString);
+        TestLogger.log(getClass().getSimpleName()+ "The language was changed to Spanish");
+    }
+
+
+    //--------------------Test case 8. Testing out About Netflix button--------------
+
+
+    public void testAboutNetflix(){
+        mediaCenter.aboutNetflixClick();
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("window.scrollBy(0, 500)", "");
+        sleepFor(2);
+        js.executeScript("window.scrollBy(0, 500)", "");
+        sleepFor(2);
+        TestLogger.log(getClass().getSimpleName() + " " + driver.getPageSource());
+    }
+
+    //--------------------Test case 9. Testing out Only on Netflix button--------------
+
+
+    public void testOnlyOnNetflix(){
+        mediaCenter.onlyOnNetflixClick();
+        clickByXpath("//*[@id=\"netflixOriginalsList\"]/div/div/div[1]/div/a[2]");
+        sleepFor(1);
+        clickByXpath("//*[@id=\"netflixOriginalsList\"]/div/div/div[2]/div/div/table/thead/tr/th[1]");
+        sleepFor(1);
+        clickByXpath("//*[@id=\"netflixOriginalsList\"]/div/div/div[2]/div/div/table/thead/tr/th[2]");
+        sleepFor(1);
+        clickByXpath("//*[@id=\"netflixOriginalsList\"]/div/div/div[2]/div/div/table/thead/tr/th[3]");
+        sleepFor(2);
+    }
+
+    //--------------------Test case 10. Testing out Company Assets button--------------
+
+    @Test
+
+    public void testCompanyAssetsLogo1(){
+        mediaCenter.companyAssetsClick();
+        clickByXpath("//*[@id=\"assetLibrary\"]/span/div/div/section/aside/ul/span/li[2]");
+        sleepFor(1);
+        clickByXpath("//*[@id=\"assetLibrary\"]/span/div/div/section/div/span/div[2]/div[2]/span/a");
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("window.scrollBy(0,200)", "");
+        sleepFor(2);
+        driver.findElement(By.className("item-detail-close")).click();
+        sleepFor(3);
+
+    }
 }
