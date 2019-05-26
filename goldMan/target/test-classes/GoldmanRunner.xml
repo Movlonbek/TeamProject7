@@ -7,14 +7,14 @@
     <parameter name="cloudEnvName" value="Saucelabs"/>
 
     <parameter name="platform" value="mac"/>
-    <parameter name="url" value="https://www.goldmansachs.com"/>
+    <parameter name="url" value="https://www.goldmansachs.com/what-we-do/index.html"/>
     <parameter name="browser" value="chrome"/>
 
 
 
-    <test name="GoldmanSachs Test">
+    <test name="GoldMan Test">
         <classes>
-            <class name="TestHomePage"/>
+            <class name="TestWhatWeDo"/>
         </classes>
     </test>
 </suite>

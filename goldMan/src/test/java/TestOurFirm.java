@@ -29,7 +29,7 @@ public class TestOurFirm extends CommonAPI {
         driver.findElement(By.xpath("//*[@id=\"wrapper\"]/div[1]/section/div/button")).click();
         sleepFor(2);
     }
-    @Test
+
     public void ExcOfficers () {
         driver.findElement(By.xpath("//*[@id=\"wrapper\"]/div[3]/section/div/div/div/div/a[2]")).click();
         sleepFor(2);

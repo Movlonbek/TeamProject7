@@ -42,7 +42,7 @@ public class TestCarrers extends CommonAPI {
         blog.click();
     }
 
-    @Test
+@Test
     public void clickCareers() {
         driver.findElement(By.xpath("//*[@id=\"audience-nav\"]/li[1]/a")).click();
         driver.findElement(By.xpath("//*[@id=\"wrapper\"]/section[1]/section/div/div[2]/a")).click();

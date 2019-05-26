@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class TestHomePage extends CommonAPI {
 
-@Test
+
     public void clickOurFirm() {
         driver.findElement(By.xpath("//*[@id=\"marketing-nav\"]/li[2]/a")).click();
         sleepFor(1);
