@@ -186,7 +186,6 @@ public class TestMediaCenter extends CommonAPI {
 
     //--------------------Test case 10. Testing out Company Assets button--------------
 
-    @Test
 
     public void testCompanyAssetsLogo1(){
         mediaCenter.companyAssetsClick();
@@ -194,10 +193,57 @@ public class TestMediaCenter extends CommonAPI {
         sleepFor(1);
         clickByXpath("//*[@id=\"assetLibrary\"]/span/div/div/section/div/span/div[2]/div[2]/span/a");
         JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("window.scrollBy(0,200)", "");
+        js.executeScript("window.scrollBy(0,250)", "");
         sleepFor(2);
         driver.findElement(By.className("item-detail-close")).click();
         sleepFor(3);
 
+    }
+
+    //--------------------Test case 11. Testing out Company Assets button--------------
+
+
+    public void testCompanyAssetsLogo2(){
+        mediaCenter.companyAssetsClick();
+        clickByXpath("//*[@id=\"assetLibrary\"]/span/div/div/section/aside/ul/span/li[2]");
+        sleepFor(1);
+        clickByXpath("//*[@id=\"assetLibrary\"]/span/div/div/section/div/span/div[2]/div[3]/span/a");
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("window.scrollBy(0,250)", "");
+        sleepFor(2);
+        driver.findElement(By.className("item-detail-close")).click();
+        sleepFor(3);
+
+    }
+
+    //--------------------Test case 12. Testing out Company Assets button and download button--------------
+
+
+    public void testCompanyAssetsDownload(){
+        mediaCenter.companyAssetsClick();
+        clickByXpath("//*[@id=\"assetLibrary\"]/span/div/div/section/aside/ul/span/li[2]");
+        sleepFor(1);
+        clickByXpath("//*[@id=\"assetLibrary\"]/span/div/div/section/div/span/div[2]/div[2]/span/a");
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("window.scrollBy(0,250)", "");
+        sleepFor(2);
+        driver.findElement(By.className("alternative-btn")).click();
+        sleepFor(3);
+    }
+
+    //--------------------Test case 13. Testing out Releases and Blog button--------------
+
+    @Test
+
+    public void testReleasesandBlogButton(){
+        mediaCenter.releasesAndBlogsClick();
+        clickByXpath("//*[@id=\"blogNavigation\"]/div/div/div/a[1]");
+        sleepFor(1);
+        clickByXpath("//*[@id=\"blogNavigation\"]/div/div/div/a[2]");
+        sleepFor(1);
+        clickByXpath("//*[@id=\"blogNavigation\"]/div/div/div/a[3]");
+        sleepFor(1);
+        clickByXpath("//*[@id=\"blogNavigation\"]/div/div/div/a[4]");
+        sleepFor(2);
     }
 }
