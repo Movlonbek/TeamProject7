@@ -7,14 +7,14 @@
     <parameter name="cloudEnvName" value="Saucelabs"/>
 
     <parameter name="platform" value="windows"/>
-    <parameter name="url" value="https://media.netflix.com/en/"/>
+    <parameter name="url" value="https://devices.netflix.com/en/"/>
     <parameter name="browser" value="chrome"/>
 
 
 
     <test name="Netflix Test">
         <classes>
-            <class name="TestMediaCenter"/>
+            <class name="TestWaysToWatch"/>
         </classes>
     </test>
 </suite>
