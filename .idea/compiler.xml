@@ -8,12 +8,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="goldmansachs" />
         <module name="generic" />
-        <module name="Goldmansachs" />
         <module name="goldMan" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Generic" target="1.5" />
+      <module name="Goldmansachs" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
